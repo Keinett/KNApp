@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 ApplicationWindow {
+    id: appWindow
     visible: true
     width: 550
     height: 1000
@@ -15,6 +16,8 @@ ApplicationWindow {
         currentIndex: tabBar.currentIndex
 
         Page1 {
+            width: appWindow.width
+            height: appWindow.height
         }
 
         Page {
