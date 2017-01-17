@@ -8,7 +8,7 @@ ApplicationWindow {
     width: 550
     height: 1000
 
-    title: qsTr("Hello World")
+    title: qsTr("Keinett")
 
     SwipeView {
         id: swipeView
