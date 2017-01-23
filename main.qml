@@ -1,12 +1,15 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Controls.Material 2.0
 
 ApplicationWindow {
     id: appWindow
     visible: true
     width: 550
     height: 1000
+
+    Material.theme: Material.Dark
 
     title: qsTr("Keinett")
 
@@ -17,6 +20,11 @@ ApplicationWindow {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
+
+
+
+
+
 
         Page1 {
             width: appWindow.width

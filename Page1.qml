@@ -117,6 +117,7 @@ Rectangle {
                 loginPopup.open();
 
 
+
                 // Now when you click the button, this piece of code runs and opens the dialog box.
             }
 
@@ -147,12 +148,45 @@ Rectangle {
         text: "Hello World" // < Text of the dialog
     }
 
+    Rectangle {
+        z: 5
+        id: backgroundPopup
+        anchors.fill: parent
+        color: "black"
+        opacity: 0.5
+        visible: false
+
+
+    }
+
     Popup{
+        z: 10
         id: loginPopup
         modal: true
-        dim: true
+
+        dim: false
+
         x: parent.width / 2
-        y: parent.height /2
+        y: parent.height / 2
+
+        onOpened: {
+            backgroundPopup.visible = true;
+        }
+
+        onClosed: {
+            backgroundPopup.visible = false;
+        }
+
+        enter: Transition {
+            NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
+        }
+
+        exit:  Transition {
+            NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+
+        }
+
+
 
         Rectangle {
             id: loginRectangle
@@ -254,6 +288,7 @@ Rectangle {
                     onClicked: {
                         loginRectangle.visible = false;
                         loginPopup.close();
+
                     }
                 }
             }
