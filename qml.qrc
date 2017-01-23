@@ -4,5 +4,7 @@
         <file>Page1.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>images/logo22.png</file>
+        <file>PlayerSearch.qml</file>
+        <file>Placeholder2.qml</file>
     </qresource>
 </RCC>

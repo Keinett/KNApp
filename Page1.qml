@@ -265,7 +265,7 @@ Rectangle {
     Flickable {
         id: flickable
         y: 69
-        height: 931
+        height: appWindow.height
         clip: true
         flickableDirection: Flickable.VerticalFlick
         anchors.right: parent.right
@@ -273,106 +273,155 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 0
 
-        Rectangle {
-            id: lookupPlayer
-            x: 25
-            y: 263
-            height: 104
-            color: "#222222"
-            radius: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 25
-            anchors.left: parent.left
-            anchors.leftMargin: 25
 
-            Text {
-                id: searchPlayerTect
-                color: "#ffffff"
-                text: qsTr("Search a Player")
-                anchors.top: parent.top
-                anchors.topMargin: 21
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 20
-                anchors.left: parent.left
-                anchors.leftMargin: 64
-                anchors.right: parent.right
-                anchors.rightMargin: 64
-                font.bold: true
-                font.family: "Verdana"
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 24
-            }
 
-            MouseArea {
-                id: searchPlayerMouseArea
-                anchors.top: parent.top
-                anchors.topMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 0
-                anchors.right: parent.right
-                anchors.rightMargin: 0
-                anchors.left: parent.left
-                anchors.leftMargin: 0
-                onClicked: {
-                    console.log("search a player clicked");
+        Column{
+            anchors.fill: parent
+            anchors.margins: 10
+            spacing: 20
+
+
+            Rectangle {
+                id: serverStatus
+
+                width: parent.width
+                height: 200
+                color: "#222222"
+                radius: 10
+                visible: true
+                clip: true
+
+
+                Text {
+                    id: serverStatus_title
+                    x: 212
+                    color: "#ffffff"
+                    text: qsTr("Server Status")
+                    font.bold: true
+                    anchors.top: parent.top
+                    anchors.topMargin: 8
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    renderType: Text.NativeRendering
+                    font.pixelSize: 19
+                }
+
+                Text {
+                    id: serverStatus_text
+                    color: "white"
+
+
+                    /* Alignment of text */
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.Wrap
+
+                    text: qsTr("loading...")
+                    anchors.rightMargin: 10
+                    anchors.leftMargin: 10
+                    anchors.bottomMargin: 10
+                    anchors.topMargin: 40
+                    anchors.fill: parent
+                    font.pixelSize: 14
+                }
+
+                MouseArea {
+                    id: serverStatusMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("server status clicked");
+                    }
                 }
             }
-        }
 
-        Rectangle {
-            id: serverStatus
-            x: 25
-            y: 100
-            height: 200
-            color: "#222222"
-            radius: 10
-            visible: true
-            clip: true
-            anchors.top: parent.top
-            anchors.topMargin: 39
-            anchors.right: parent.right
-            anchors.rightMargin: 25
-            anchors.left: parent.left
-            anchors.leftMargin: 25
+            Rectangle {
+                id: lookupPlayer
 
-            Text {
-                id: serverStatus_title
-                x: 212
-                color: "#ffffff"
-                text: qsTr("Server Status")
-                font.bold: true
-                anchors.top: parent.top
-                anchors.topMargin: 8
-                anchors.horizontalCenter: parent.horizontalCenter
-                renderType: Text.NativeRendering
-                font.pixelSize: 19
+                width: parent.width
+                height: 104
+                color: "#222222"
+                radius: 10
+
+                Text {
+                    id: searchPlayerTect
+                    color: "#ffffff"
+                    text: qsTr("Search a Player")
+                    anchors.top: parent.top
+                    anchors.topMargin: 21
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 20
+                    anchors.left: parent.left
+                    anchors.leftMargin: 64
+                    anchors.right: parent.right
+                    anchors.rightMargin: 64
+                    font.bold: true
+                    font.family: "Verdana"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 24
+                }
+
+                MouseArea {
+                    id: searchPlayerMouseArea
+                    anchors.top: parent.top
+                    anchors.topMargin: 0
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 0
+                    anchors.right: parent.right
+                    anchors.rightMargin: 0
+                    anchors.left: parent.left
+                    anchors.leftMargin: 0
+                    onClicked: {
+                        console.log("search a player clicked");
+                        appWindow.secondPageLoader.source = "PlayerSearch.qml";
+                        appWindow.swipeView.setCurrentIndex(1);
+
+                    }
+                }
             }
 
-            Text {
-                id: serverStatus_text
-                color: "white"
+            Rectangle {
+                id: placeholder2
 
+                width: parent.width
+                height: 104
+                color: "#222222"
+                radius: 10
 
-                /* Alignment of text */
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                wrapMode: Text.Wrap
+                Text {
+                    id: placeholderText
+                    color: "#ffffff"
+                    text: qsTr("Placeholder 2")
+                    anchors.top: parent.top
+                    anchors.topMargin: 21
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 20
+                    anchors.left: parent.left
+                    anchors.leftMargin: 64
+                    anchors.right: parent.right
+                    anchors.rightMargin: 64
+                    font.bold: true
+                    font.family: "Verdana"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 24
+                }
 
-                text: qsTr("loading...")
-                anchors.rightMargin: 10
-                anchors.leftMargin: 10
-                anchors.bottomMargin: 10
-                anchors.topMargin: 40
-                anchors.fill: parent
-                font.pixelSize: 14
-            }
+                MouseArea {
+                    id: placeholderMouseArea
+                    anchors.top: parent.top
+                    anchors.topMargin: 0
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 0
+                    anchors.right: parent.right
+                    anchors.rightMargin: 0
+                    anchors.left: parent.left
+                    anchors.leftMargin: 0
+                    onClicked: {
+                        console.log("Placeholder 2 clicked");
+                        appWindow.secondPageLoader.source = "Placeholder2.qml";
+                        appWindow.swipeView.setCurrentIndex(1);
 
-            MouseArea {
-                id: serverStatusMouseArea
-                anchors.fill: parent
-                onClicked: {
-                    console.log("server status clicked");
+                    }
                 }
             }
         }

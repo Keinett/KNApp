@@ -10,6 +10,9 @@ ApplicationWindow {
 
     title: qsTr("Keinett")
 
+    property alias secondPageLoader : secondPageLoader
+    property alias swipeView: swipeView
+
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -20,11 +23,13 @@ ApplicationWindow {
             height: appWindow.height
         }
 
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
+
+
+        Rectangle{
+            width: appWindow.width
+            height: appWindow.height
+
+            Loader{ anchors.fill: parent; id: secondPageLoader}
         }
     }
 
