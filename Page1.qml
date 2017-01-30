@@ -11,7 +11,6 @@ Rectangle {
     color: "#333333"
 
     property string serverIp : "mc.keinett.us";
-    property string knAPI : "http://api.keinett.com/";
 
     // So now we have the UI code in place, now we can make actual requests
     // To get JSON we use javascript in conjuction with the built in function XMLHttpRequest
@@ -30,39 +29,6 @@ Rectangle {
             }
         }
         xhr.open('GET', "https://mcapi.us/server/status?ip=" + serverIp, true);
-        xhr.send(null);
-    }
-
-    function getPlayerStats(mcServer, playerName){
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                var status = JSON.parse(xhr.responseText); // Parse the responseinto JSON data
-
-                if (mcServer == "kc1") {
-
-                }
-                if (mcServer == "prison") {
-
-                }
-                if (mcServer == "pvp") {
-
-                }
-                if (mcServer == "sg") {
-
-                }
-                if (mcServer == "skyblock") {
-
-                }
-                if (mcServer == "swars") {
-
-                }
-                if (mcServer == "xauth") {
-
-                }
-            }
-        }
-        xhr.open('GET', knAPI + mcServer + "/?p=" + playerName, true);
         xhr.send(null);
     }
 
@@ -235,6 +201,7 @@ Rectangle {
                     TextField {
                         id: textInput
                         text: qsTr("")
+                        color: "#000000"
                         Layout.fillHeight: false
                         Layout.fillWidth: true
 
@@ -260,6 +227,7 @@ Rectangle {
                     TextField {
                         id: textInput1
                         text: qsTr("")
+                        color: "#000000"
                         Layout.fillHeight: false
                         Layout.fillWidth: true
 
@@ -425,7 +393,7 @@ Rectangle {
                 Text {
                     id: placeholderText
                     color: "#ffffff"
-                    text: qsTr("Placeholder 2")
+                    text: qsTr("Account")
                     anchors.top: parent.top
                     anchors.topMargin: 21
                     anchors.bottom: parent.bottom

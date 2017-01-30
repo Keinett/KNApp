@@ -48,7 +48,7 @@ ApplicationWindow {
             text: qsTr("Menu")
         }
         TabButton {
-            text: qsTr("Second")
+            text: qsTr("Option")
         }
     }
 }
