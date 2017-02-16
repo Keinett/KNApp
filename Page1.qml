@@ -265,22 +265,31 @@ Rectangle {
 
 
 
+
     Flickable {
         id: flickable
-        y: 69
-        height: appWindow.height
+
+
         clip: true
         flickableDirection: Flickable.VerticalFlick
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
+
+        anchors.fill: parent
+
+        anchors.topMargin: 70
+
+        contentWidth: stuffColumn.width
+        contentHeight: stuffColumn.height
+
 
 
 
         Column{
+            id: stuffColumn
+
             anchors.fill: parent
-            anchors.margins: 10
+
+            anchors.margins: 1
+
             spacing: 20
 
 
